@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <style>
+        *{
+            margin: 0;
+            border: 0;
+            box-sizing: border-box;
+
+        }
+        body{
+            display: flex;
+            height: 100vh;
+            justify-content: center;
+            align-items: center;
+            background-color: cadetblue;
+        }
+        #clock{
+            color: white;
+            font-size: 30px;
+            background-color: #333;
+            padding: 2rem;
+        }
+        
+        </style>
+    </head>
+    <body>
+        <!-- Digital clock -->
+        <div id="clock"></div>
+
+
+        <!-- javascript -->
+        <script>
+        let clock = ()=>{
+            // get date and hours, minutes,seconds
+            let date= new Date();
+            let hours =date.getHours();
+            let minutes =date.getMinutes();
+            let seconds =date.getSeconds();
+            let period ="AM";
+
+            if(hours == 0){
+                hours = 12;
+            }
+             else if(hours >=12){
+                hours = hours -12;
+                period ="PM";
+             }   
+            
+             hours = hours < 10 ? "0"+ hours :hours;
+             minutes = minutes < 10 ? "0" + minutes :minutes;
+              seconds =seconds < 10 ? "0" + seconds :seconds;
+
+              let time = `${hours}: ${minutes}: ${seconds}   ${period}`;
+              document.getElementById('clock').innerText = time;
+            
+              //time set
+              setTimeout(clock,1000);   
+        };
+        clock();
+        
+        </script>
+    </body>
+</html>
